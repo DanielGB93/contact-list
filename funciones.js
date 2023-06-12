@@ -1,34 +1,55 @@
-/*1) Crea una lista de contactos con datos predefinidos, cada contacto 
-debe contener el nombre y apellido como una sola cadena de caracteres*/
-let contactos = ['Juan Perez', 'Daniel Garcia', 'Hertrudis Ávila'];
+const contacto = {
+  nombre: ["Juan Pérez", "Daniel García", "Maria Bonilla"],
+  telefono: ["9878-7846", "3598-9754", "8246-4698"],
+  ubicaciones: {
+    ciudad: ["Tegucigalpa", "Comayagua", "San Pedro"],
+    direccion: ["Col. 3 de Mayo", "Col. Carlos Miranda", "3era Avenida"],
+  },
+};
 
-/* 2) Crea una función para añadir un nuevo contacto a una lista*/
-function anadir(nombre, apellido){
-    contactos.push(nombre+' '+apellido);
+const funciones = {
+  //Agrega un contacto nuevo a la lista de contactos
+  anadir: function (name, tel, city, direction) {
+    this.contacto.nombre.push(name);
+    this.contacto.telefono.push(tel);
+    this.contacto.ubicaciones.ciudad.push(city);
+    this.contacto.ubicaciones.direccion.push(direction);
+  },
+//Eliminar un contacto según el nombre
+  eliminar: function eliminar(nomb) {
+    const index = contacto.nombre.indexOf(nomb);
+    const nombres2 = contacto.nombre.splice(index, 1);
+    return nombres2;
+  },
+  //Muestra los contactos existentes hasta el momento
+  verTodo: function () {
+    for (const i in contacto.nombre) {
+      console.log(
+        `${i}. Nombre: ${contacto.nombre[i]} . Teléfono: ${contacto.telefono[i]}`
+      );
+      console.log(
+        `Ubicación: ${contacto.ubicaciones.ciudad[i]}, ${contacto.ubicaciones.direccion[i]}`
+      );
+   
+    }
+  },
+  buscarContacto: function(nomb){
+    const index = contacto.nombre.indexOf(nomb);
+    console.log(`${index}. Nombre: ${contacto.nombre[index]}. Teléfono: ${contacto.telefono[index]}`);
+    console.log(`Ubicación: ${contacto.ubicaciones.ciudad[index]}, ${contacto.ubicaciones.direccion[index]}`);
+  }
+};
+function hola(){
+    const saludo = 'Hola';
+    return saludo;
 }
 
-nombre= 'elbo';
-apellido= 'racho';
-let nuevo= anadir(nombre,apellido);
-console.log(contactos);
+console.log(contacto);
+let listaContactos =funciones.verTodo();
+// document.getElementById("lista").innerHTML= listaContactos;
+funciones.eliminar("Daniel García");
+funciones.verTodo();
+funciones.buscarContacto('Juan Pérez');
 
-/* Crea una función para borrar un contacto existente de la lista*/
-//function eliminar(nombre, apellido){
-function eliminar(nomb){
-    const index= contactos.indexOf(nomb);
-    const x= contactos.splice(index, 1);
-    return contactos;
-} 
-
-let newContactos= eliminar('elbo racho');
-console.log(newContactos);
-
-/* Crea una función para imprimir en consola los contactos
- presentes en la lista*/
-
-function verLista(arr=contactos){
-for (const value of arr) {
-    console.log(value);
-}}
-
-let ver= verLista();
+const saludo= hola();
+document.getElementById("lista").innerHTML = saludo;
