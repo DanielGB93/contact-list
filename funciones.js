@@ -38,6 +38,13 @@ const funciones = {
     console.log(`${index}. Nombre: ${contacto.nombre[index]}. Teléfono: ${contacto.telefono[index]}`);
     console.log(`Ubicación: ${contacto.ubicaciones.ciudad[index]}, ${contacto.ubicaciones.direccion[index]}`);
   }
+  //Editar un contacto
+  editar: function(nomb, tel, city, direccion){
+  const index = contacto.indexOf(nomb); 
+  this.contacto.telefono[index].push(tel);
+  this.contacto.ubicaciones.ciudad[index].push(city);
+  this.contacto.ubicaciones.direccion[index].push(direction);
+   
 };
 function hola(){
     const saludo = 'Hola';
